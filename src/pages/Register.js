@@ -1,12 +1,26 @@
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../auth/firebase-config";
+
+
 const Register = () => {
     const [firstName, setFirstName] = useState();
     const [lastName, setlastName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const handleSubmit = () => {
-        console.log(firstName, lastName, email,password );
+
+    const handleSubmit = async() => {
+        // console.log(firstName, lastName, email,password );
+        try{
+
+          let user = await createUserWithEmailAndPassword(auth, email, password)
+          console.log(user)
+          
+        }catch(err){
+          alert(err.message)
+        }
     }
+
     return (
         <div className="register">
       <div className="form-image">
