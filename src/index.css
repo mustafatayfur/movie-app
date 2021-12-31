@@ -128,9 +128,11 @@ body {
   display: flex;
   flex-direction: row;
   height: 50px;
+  
 }
 .buttons h3 {
   margin-top: 8px;
+  color: white;
 }
 .link {
   color: #0B5ED7;

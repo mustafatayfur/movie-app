@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -9,12 +10,19 @@ const Register = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
+    const navigate = useNavigate()
+
     const handleSubmit = async() => {
         // console.log(firstName, lastName, email,password );
+        const displayName = firstName + " " + lastName
         try{
 
           let user = await createUserWithEmailAndPassword(auth, email, password)
           console.log(user)
+          await updateProfile(auth.currentUser, {displayName : displayName})
+          console.log(auth.currentUser)
+          navigate('/')
+          
           
         }catch(err){
           alert(err.message)
