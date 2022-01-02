@@ -32,7 +32,7 @@ const handleSubmit = (e)=> {
 }
 
     return (
-        <>
+        <div>
         <form className="search" onSubmit={handleSubmit} >
             <input
              type="search" 
@@ -46,7 +46,7 @@ const handleSubmit = (e)=> {
         <div className='movie-container'>
         {movies.map((movie)=> <MovieCard key={movie.id} {...movie}/>)}
         </div>
-        </>
+        </div>
         
     )
 }
